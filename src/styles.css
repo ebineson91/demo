@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+
+.jumbotron{
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.pac-container{
+    z-index: 9999 !important;
+}
+
+.card-body > p,.jumbotron {
+    text-transform: capitalize !important;
+}
+
+.required:after {
+    content: "*";
+    padding-left:1%;
+    color:#ec1e0f;
+}
