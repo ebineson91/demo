@@ -56,6 +56,8 @@ export class AppComponent implements OnInit {
   getAllBackgroundList(){
     this.api.getAllBackgroundList().subscribe(backgroundList => {
       this.allbackgroundList = backgroundList;
+      //this.allbackgroundList.map(bgList => (bgList.idField = bgList.id, bgList.textField = bgList.name));
+      console.log(this.allbackgroundList);
     });
 
   }
@@ -66,6 +68,20 @@ export class AppComponent implements OnInit {
     })
   }
 
+  onBackgroundSelect(value){
+    if (value) {
+      let selectedVal = this.allbackgroundList.find(bgList => (bgList.id === value.id));
+      this.opportunitiesList.backgrounds.push(selectedVal);
+      this.opportunitiesList.backgrounds = this.opportunitiesList.backgrounds.filter(bgList => Object.keys(bgList).length > 2);
+      console.log(this.opportunitiesList.backgrounds);
+    }
+  }
+
+  onBackgroundDeselect(value){
+    if (value) {
+      this.opportunitiesList.backgrounds.filter(bgList => (bgList.id != value.id));
+    }
+  }
 getOpportunitiesList() {
 
     this.api.getOpportunitiesList().subscribe(opportunitiesList => {
@@ -110,9 +126,32 @@ getOpportunitiesList() {
      this.opportunitiesList.earliest_start_date = this.opportunitiesList.earliest_start_date.toISOString();
      this.opportunitiesList.latest_end_date = this.opportunitiesList.latest_end_date.toISOString();
      this.opportunitiesList.applications_close_date = this.opportunitiesList.applications_close_date.toISOString();
+     //this.allbackgroundList.filter(bgList => ( this.opportunitiesList.backgrounds.map()));
+
      console.log(this.opportunitiesList);
       this.staticModal.hide();
       // post api
+      let postData = {
+        "opportunity": {
+          "title": this.opportunitiesList.title,
+          "applications_close_date": this.opportunitiesList.applications_close_date,
+          "earliest_start_date": this.opportunitiesList.earliest_start_date,
+          "latest_end_date": this.opportunitiesList.latest_end_date,
+          "description": this.opportunitiesList.title,
+          "backgrounds": this.opportunitiesList.backgrounds,
+          "skills": this.opportunitiesList.skills,
+          "specifics_info": {
+            "salary": this.opportunitiesList.specifics_info.salary
+          },
+          "role_info": {
+            "city": this.opportunitiesList.role_info.city,
+            "selection_process": this.opportunitiesList.role_info.selection_process
+          }
+        }
+      }
+      this.api.postOpportunitiesList(postData).subscribe(postOpportunitiesList => {
+        this.getOpportunitiesList();
+      })
     } else {
       alert("Close Date should be between 30 to 90 days from current date")
     }

@@ -108,7 +108,7 @@
              <label for="background" class="col-sm-4 col-form-label required">Background</label>
              <div class="col-sm-6">
                 <ng-multiselect-dropdown name="background" [placeholder]="'Select Background'" [data]="allbackgroundList" [(ngModel)]="opportunitiesList.backgrounds" [disabled]="disabled"
-                [settings]="bgdropdownSettings" >
+                [settings]="bgdropdownSettings" (onSelect)="onBackgroundSelect($event)" (onDeSelect)="onBackgroundDeselect($event)">
                 </ng-multiselect-dropdown>
              </div>
           </div>
@@ -116,7 +116,7 @@
              <label for="background" class="col-sm-4 col-form-label required">Skills</label>
              <div class="col-sm-6">
                 <ng-multiselect-dropdown name="skills" [placeholder]="'Select Skills'" [data]="allskillList" [(ngModel)]="opportunitiesList.skills" [disabled]="disabled"
-                [settings]="skilldropdownSettings" >
+                [settings]="skilldropdownSettings" (onSelect)="onSkillSelect($event)">
                 </ng-multiselect-dropdown>
              </div>
           </div>
@@ -147,7 +147,7 @@
             </div>
             <div class= "offset-sm-3 col-sm-3">
                 <button type="button" class="btn btn-secondary float-left" (click)="closeModal()">Close</button>
-                <button type="button" class="btn btn-primary float-right" (click)="submit()" [disabled]="(!opportunitiesList.title || !opportunitiesList.description  || !opportunitiesList.applications_close_date  || !opportunitiesList.earliest_start_date  || !opportunitiesList.backgrounds  || !opportunitiesList.skills  || !opportunitiesList.specifics_info.salary
+                <button type="button" class="btn btn-primary float-right" (click)="submit()" [disabled]="(!opportunitiesList.title || !opportunitiesList.description  || !opportunitiesList.applications_close_date  || !opportunitiesList.earliest_start_date  || !opportunitiesList.backgrounds.length  || !opportunitiesList.skills.length  || !opportunitiesList.specifics_info.salary
                 || !opportunitiesList.role_info.city  || !opportunitiesList.role_info.selection_process ||!opportunitiesList.latest_end_date )">Submit</button>
             </div>
           </div>

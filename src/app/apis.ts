@@ -69,4 +69,11 @@ export class projApi {
       });
   }
 
+  postOpportunitiesList(opportunitiesList) {
+    return this.http.patch('http://gisapi-web-staging-1636833739.eu-west-1.elb.amazonaws.com/v2/opportunities/1624',opportunitiesList,{params:this.params})
+      .map((res) => {
+        return res;
+      });
+  }
+
 }
