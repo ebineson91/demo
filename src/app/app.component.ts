@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   skilldropdownSettings={};
   allbackgroundList;
   allskillList;
+  disabled = false;
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
   @ViewChild('staticModal') public staticModal: ModalDirective;
 
