@@ -49,28 +49,28 @@ export class projApi {
   params = new HttpParams().set('access_token', 'dd0df21c8af5d929dff19f74506c4a8153d7acd34306b9761fd4a57cfa1d483c');
 
   getOpportunitiesList() {
-    return this.http.get('http://gisapi-web-staging-1636833739.eu-west-1.elb.amazonaws.com/v2/opportunities/1624',{params:this.params})
+    return this.http.get('https://gisapi-web-staging-1636833739.eu-west-1.elb.amazonaws.com/v2/opportunities/1624',{params:this.params})
       .map((res) => {
         return res;
       });
   }
 
   getAllBackgroundList() {
-    return this.http.get('http://gisapi-web-staging-1636833739.eu-west-1.elb.amazonaws.com/v2/lists/backgrounds',{params:this.params})
+    return this.http.get('https://gisapi-web-staging-1636833739.eu-west-1.elb.amazonaws.com/v2/lists/backgrounds',{params:this.params})
       .map((res) => {
         return res;
       });
   }
 
   getAllSkillList() {
-    return this.http.get('http://gisapi-web-staging-1636833739.eu-west-1.elb.amazonaws.com/v2/lists/skills',{params:this.params})
+    return this.http.get('https://gisapi-web-staging-1636833739.eu-west-1.elb.amazonaws.com/v2/lists/skills',{params:this.params})
       .map((res) => {
         return res;
       });
   }
 
   postOpportunitiesList(opportunitiesList) {
-    return this.http.patch('http://gisapi-web-staging-1636833739.eu-west-1.elb.amazonaws.com/v2/opportunities/1624',opportunitiesList,{params:this.params})
+    return this.http.patch('https://gisapi-web-staging-1636833739.eu-west-1.elb.amazonaws.com/v2/opportunities/1624',opportunitiesList,{params:this.params})
       .map((res) => {
         return res;
       });
