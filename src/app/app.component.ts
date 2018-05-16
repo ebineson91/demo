@@ -5,6 +5,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { GooglePlaceDirective } from "ngx-google-places-autocomplete";
 import {projApi} from './apis';
 declare const google: any;
+declare let window;
 
 @Component({
   selector: 'app-root',
@@ -29,9 +30,15 @@ export class AppComponent implements OnInit {
     private modalService: BsModalService,
     private api : projApi
 ) {
+  var url = window.location.href;
+  url=url.split("/");
+  if(url[2]==="ebineson-demo.herokuapp.com") {
+    window.location.href="http://ebineson-demo.herokuapp.com"
+  }     
 
   }
   ngOnInit() {
+    
     this.getOpportunitiesList();
     this.getAllBackgroundList();
     this.getAllSkillList();
