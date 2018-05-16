@@ -30,9 +30,8 @@ export class AppComponent implements OnInit {
     private modalService: BsModalService,
     private api : projApi
 ) {
-  var url = window.location.href;
-  url=url.split("/");
-  if(url[2]==="ebineson-demo.herokuapp.com") {
+  
+  if(window.location.href==="https://ebineson-demo.herokuapp.com") {
     window.location.href="http://ebineson-demo.herokuapp.com"
   }     
 
